@@ -1,0 +1,155 @@
+========================================
+⚠️  CRITICAL: YOU MUST REBUILD! ⚠️
+========================================
+
+ERROR 50 IS STILL APPEARING!
+
+This means you are running the OLD version
+of the C# service WITHOUT the fixes!
+
+========================================
+WHY YOU'RE STILL GETTING ERROR 50:
+========================================
+
+The code fixes are in Program.cs, but you
+need to COMPILE them into ZKTest.exe first!
+
+Think of it like this:
+- Program.cs = Recipe (the fix)
+- ZKTest.exe = Cake (needs baking)
+- Building = Baking the cake
+
+You have the recipe, but haven't baked yet!
+
+
+========================================
+SOLUTION: REBUILD THE SERVICE NOW!
+========================================
+
+STEP 1: Stop the running service
+--------------------------------
+Close the ZKTest.exe console window
+OR press Ctrl+C in it
+OR kill it in Task Manager
+
+
+STEP 2: Open in Visual Studio
+--------------------------------
+1. Go to: C:\xampp\htdocs\WTEI\ZKTECO
+2. Double-click: ZKTest.sln
+3. Visual Studio will open
+
+
+STEP 3: Set to Release mode
+--------------------------------
+Top toolbar dropdown: Change "Debug" to "Release"
+
+
+STEP 4: Clean old build
+--------------------------------
+Menu: Build → Clean Solution
+Wait for "Clean succeeded"
+
+
+STEP 5: Build new version
+--------------------------------
+Menu: Build → Build Solution
+OR press: Ctrl + Shift + B
+Wait for: "Build: 1 succeeded"
+
+
+STEP 6: Verify the build date
+--------------------------------
+1. Go to: C:\xampp\htdocs\WTEI\ZKTECO\bin\Release
+2. Right-click: ZKTest.exe
+3. Properties → Details
+4. Check "Date modified" - should be TODAY!
+
+
+STEP 7: Run the NEW service
+--------------------------------
+Double-click: ZKTest.exe
+Console should open
+
+
+STEP 8: Test again
+--------------------------------
+Browser: http://localhost/WTEI/ZKTECO/test_connection.php
+Should now work!
+
+
+========================================
+HOW TO VERIFY YOU HAVE THE NEW VERSION
+========================================
+
+In the C# console window, you should see:
+
+✅ GOOD (New version):
+   [HH:mm:ss] Available at: http://127.0.0.1:8888 and http://localhost:8888
+   [HH:mm:ss] Supported protocols: HTTP/1.0 and HTTP/1.1
+
+❌ BAD (Old version):
+   [HH:mm:ss] Supported protocols: HTTP/1.1 only
+   [HH:mm:ss] Clients should use: http://127.0.0.1:8888
+
+
+========================================
+STILL GETTING ERROR 50 AFTER REBUILD?
+========================================
+
+If you rebuilt and still see Error 50:
+
+1. CHECK: Did AdminEmployees.php get updated?
+   - Open: C:\xampp\htdocs\WTEI\AdminEmployees.php
+   - Search for: 'Expect:'
+   - Should find line: 'Expect:' in CURL headers
+
+2. RESTART Apache:
+   httpd -k restart
+
+3. CLEAR browser cache:
+   Ctrl + Shift + Delete
+
+4. Try enrollment again
+
+
+========================================
+TEST FILE ACCESS FIXED!
+========================================
+
+The .htaccess file has been updated to allow
+test_connection.php to run.
+
+Browser should now show the test page instead
+of "Forbidden" error.
+
+
+========================================
+QUICK CHECK COMMAND
+========================================
+
+PowerShell:
+cd C:\xampp\htdocs\WTEI\ZKTECO\bin\Release
+Get-Item ZKTest.exe | Select-Object LastWriteTime
+
+This shows when ZKTest.exe was last built.
+Should be TODAY'S date and recent time!
+
+
+========================================
+SUMMARY
+========================================
+
+✓ .htaccess fixed (test_connection.php accessible)
+✓ AdminEmployees.php fixed (PHP side)
+✓ Program.cs fixed (C# side)
+
+✗ ZKTest.exe NOT REBUILT YET!
+  ↑↑↑ THIS IS WHY ERROR 50 STILL HAPPENS ↑↑↑
+
+→ REBUILD NOW using Visual Studio!
+→ Then test enrollment again!
+
+
+========================================
+

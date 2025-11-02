@@ -1,0 +1,1920 @@
+/* Base Styles */
+:root {
+    --primary-color: #112D4E;      /* Dark blue */
+    --secondary-color: #3F72AF;    /* Medium blue */
+    --accent-color: #DBE2EF;       /* Light blue/gray */
+    --background-color: #F9F7F7;   /* Off white */
+    --text-color: #112D4E;         /* Using dark blue for text */
+    --border-color: #DBE2EF;       /* Light blue for borders */
+    --shadow-color: rgba(17, 45, 78, 0.1); /* Primary color shadow */
+    --success-color: #3F72AF;      /* Using secondary color for success */
+    --warning-color: #DBE2EF;      /* Using accent color for warnings */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    display: flex;
+    min-height: 100vh;
+    color: var(--text-color);
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;  /* Slightly reduced from 280px */
+    background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    padding: 20px 0;
+    box-shadow: 4px 0 10px var(--shadow-color);
+    display: flex;
+    flex-direction: column;
+    color: white;
+    position: fixed;
+    height: 100vh;
+    transition: width 0.3s ease, margin-left 0.3s ease;
+    border-right: 2px solid var(--accent-color);
+    z-index: 100;
+    left: 0;
+    top: 0;
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 24px;
+    padding: 25px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.menu {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s;
+    border-radius: 12px;
+    margin-bottom: 5px;
+}
+
+.menu-item:hover, .menu-item.active {
+    background-color: rgba(219, 226, 239, 0.2); /* accent color with opacity */
+    color: var(--background-color);
+    transform: translateX(5px);
+}
+
+.menu-item i {
+    margin-right: 15px;
+    width: 20px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.logout-btn {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border: 1px solid var(--secondary-color);
+    padding: 15px;
+    margin: 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    transform: translateY(-2px);
+}
+
+.logout-btn i {
+    margin-right: 10px;
+}
+
+/* Main Content Styles */
+.main-content {
+    margin-left: 250px;  /* Match sidebar width */
+    padding: 20px;
+    min-height: 100vh;
+    background-color: var(--background-color);
+    transition: margin-left 0.3s ease, width 0.3s ease;
+    width: calc(100% - 250px);  /* Ensure content takes remaining width */
+    box-sizing: border-box;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    background-color: white;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.page-title {
+    font-size: 28px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Card Styles */
+.card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--shadow-color);
+    border-color: var(--secondary-color);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.card-title {
+    font-size: 18px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Button Styles */
+.btn {
+    padding: 12px 24px;
+   
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border: 1px solid var(--accent-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    border: 1px solid var(--accent-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Stats Container Styles */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-box {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.stat-icon.attendance {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.stat-icon.hours {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+}
+
+.stat-icon.percentage {
+    background-color: #E7D5FF;
+    color: var(--secondary-color);
+}
+
+.stat-info {
+    flex: 1;
+}
+
+.stat-value {
+    display: block;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--secondary-color);
+    line-height: 1.2;
+}
+
+.stat-label {
+    color: #666;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.stat-details {
+    margin-top: 10px;
+    display: flex;
+    gap: 15px;
+}
+
+.detail-item {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 12px;
+}
+
+.detail-item.success {
+    background-color: var(--accent-color);
+    color: #2E7D32;
+}
+
+.detail-item.warning {
+    background-color: #FFF3E0;
+    color: #F57C00;
+}
+
+/* Table Styles */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 2px solid var(--accent-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--accent-color);
+}
+
+th {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+tr:hover {
+    background-color: var(--accent-color);
+}
+
+/* Status Badge Styles */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow-wrap: normal;
+}
+
+.status-success {
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    border: 1px solid var(--accent-color);
+}
+
+.status-warning {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border: 1px solid var(--secondary-color);
+}
+
+.status-late {
+    background-color: rgba(255, 235, 59, 0.15);
+    color: #F57F17;
+}
+
+.status-early_in {
+    background-color: rgba(76, 175, 80, 0.15);
+    color: #4CAF50;
+}
+
+.status-halfday {
+    background-color: rgba(33, 150, 243, 0.15);
+    color: #2196F3;
+}
+
+.status-on_time {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.2), rgba(255, 235, 59, 0.2));
+    color: #FF8F00;
+    box-shadow: 0 2px 4px rgba(255, 193, 7, 0.3);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    background-color: var(--background-color);
+    margin: 50px auto;
+    padding: 25px;
+    width: 95%;
+    max-width: 500px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px var(--shadow-color);
+    border: 2px solid var(--accent-color);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.modal-header h2 {
+    font-size: 20px;
+    color: var(--primary-color);
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.close-modal:hover {
+    color: var(--primary-color);
+}
+
+.modal-body {
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(63, 114, 175, 0.2);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--accent-color);
+}
+
+/* Form Grid Layout */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 70px;
+    }
+    
+    .main-content {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+    }
+    
+    .sidebar .logo span,
+    .sidebar .menu-item span,
+    .sidebar .logout-btn span {
+        display: none;
+    }
+    
+    .sidebar .menu-item {
+        padding: 15px;
+        justify-content: center;
+    }
+    
+    .sidebar .menu-item i {
+        margin: 0;
+    }
+    
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+        width: 90%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+}
+
+/* Payroll Grid Styles */
+.payroll-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.employee-card {
+    background-color: var(--background-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.employee-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.employee-avatar {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    border: 1px solid var(--accent-color);
+}
+
+.employee-info h3 {
+    color: var(--primary-color);
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.employee-info p {
+    color: var(--secondary-color);
+    font-size: 12px;
+}
+
+.salary-details {
+    background-color: var(--background-color);
+    border-radius: 6px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--accent-color);
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--accent-color);
+    font-size: 13px;
+}
+
+.deductions-list {
+    background-color: var(--background-color);
+    border-radius: 6px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--accent-color);
+}
+
+.deductions-list h4 {
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--accent-color);
+    font-size: 13px;
+}
+
+.deduction-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--accent-color);
+    font-size: 12px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: var(--accent-color);
+    border-radius: 6px;
+    font-weight: 600;
+    color: var(--primary-color);
+    border: 1px solid var(--secondary-color);
+    font-size: 14px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--accent-color);
+}
+
+.action-buttons .btn {
+    padding: 8px 12px;
+    font-size: 12px;
+}
+
+/* Responsive adjustments */
+@media (min-width: 1400px) {
+    .payroll-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 1200px) {
+    .payroll-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .payroll-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .payroll-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Quick Actions Styles */
+.quick-actions {
+    background-color: var(--background-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 16px;
+    padding: 25px;
+    margin-top: 20px;
+}
+
+.quick-actions .card-header {
+    margin-bottom: 25px;
+}
+
+.action-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 15px;
+}
+
+.action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 20px;
+    background-color: var(--background-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 12px;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    text-align: center;
+    min-height: 140px;
+}
+
+.action-btn:hover {
+    transform: translateY(-3px);
+    border-color: var(--secondary-color);
+    background-color: var(--accent-color);
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.action-btn i {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: var(--secondary-color);
+    background-color: var(--background-color);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover i {
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    border-color: var(--background-color);
+}
+
+.action-btn span {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-top: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .action-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .action-buttons {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-btn {
+        padding: 20px;
+        min-height: 120px;
+    }
+}
+
+/* Dashboard Grid Layout */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+/* Dashboard Cards Styles */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.card-icon {
+    width: 70px;
+    height: 70px;
+    background-color: var(--background-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.card-icon i {
+    font-size: 28px;
+    color: var(--secondary-color);
+}
+
+.card-title {
+    color: var(--primary-color);
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.card-value {
+    color: var(--secondary-color);
+    font-size: 32px;
+    font-weight: 600;
+}
+
+/* Add styles for the filters section */
+.filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+
+/* Action button styles */
+
+.action-btn {
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+}
+
+.approve-btn { 
+    color: var(--success-color);
+}
+
+.approve-btn:hover {
+    background-color: rgba(22, 199, 154, 0.1);
+}
+
+.reject-btn { 
+    color: #ff4757;
+}
+
+.reject-btn:hover {
+    background-color: rgba(255, 71, 87, 0.1);
+}
+
+/* Alert styles */
+.alert {
+    padding: 16px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    animation: slideIn 0.3s ease;
+}
+
+.alert-success {
+    background-color: rgba(22, 199, 154, 0.1);
+    color: var(--success-color);
+    border: 1px solid rgba(22, 199, 154, 0.2);
+}
+
+.alert-error {
+    background-color: rgba(255, 71, 87, 0.1);
+    color: #ff4757;
+    border: 1px solid rgba(255, 71, 87, 0.2);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Add these styles to your hr-styles.css file */
+.no-activities {
+    padding: 20px;
+    text-align: center;
+    color: var(--text-color);
+    font-style: italic;
+}
+
+.activity-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-item:hover {
+    background-color: var(--accent-color);
+}
+
+.activity-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.activity-details {
+    flex: 1;
+    font-size: 14px;
+}
+
+.activity-details strong {
+    color: var(--primary-color);
+}
+
+.activity-time {
+    font-size: 12px;
+    color: var(--secondary-color);
+}
+
+/* --- Responsive Design Adjustments --- */
+
+/* Large Desktops (Optional - Adjust if needed) */
+@media (min-width: 1400px) {
+    .payroll-grid {
+        grid-template-columns: repeat(4, 1fr); /* More columns on very large screens */
+    }
+    .dashboard-cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Medium Desktops / Laptops */
+@media (max-width: 1200px) {
+    .sidebar {
+        width: 220px;
+    }
+    .main-content {
+        margin-left: 220px;
+        width: calc(100% - 220px);
+    }
+    .dashboard-cards {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .payroll-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust minmax as needed */
+    }
+    .page-title {
+        font-size: 24px;
+    }
+    .card-value {
+        font-size: 28px;
+    }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 80px; /* Collapse sidebar to icons */
+    }
+    .sidebar .logo span,
+    .sidebar .menu-item span,
+    .sidebar .logout-btn span {
+        display: none; /* Hide text */
+    }
+    .sidebar .logo {
+        padding: 20px 0;
+        font-size: 20px; /* Adjust logo size if needed */
+    }
+    .sidebar .menu-item {
+        padding: 15px;
+        justify-content: center;
+    }
+    .sidebar .menu-item i {
+        margin-right: 0;
+    }
+    .sidebar .logout-btn {
+        margin: 20px 10px; /* Adjust margin */
+        padding: 12px;
+    }
+    .sidebar .logout-btn i {
+        margin-right: 0;
+    }
+
+    .main-content {
+        margin-left: 80px;
+        width: calc(100% - 80px);
+        padding: 15px; /* Reduce padding */
+    }
+
+    .page-header {
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .page-title {
+        font-size: 22px;
+    }
+
+    .dashboard-cards {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    .card {
+        padding: 15px;
+    }
+    .card-value {
+        font-size: 24px;
+    }
+    .card-icon i {
+        font-size: 24px;
+    }
+
+    .payroll-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+    .employee-card {
+        padding: 12px;
+    }
+
+    .filters {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .form-control {
+        min-width: unset; /* Remove min-width */
+    }
+}
+
+/* Mobile Phones */
+@media (max-width: 576px) {
+    .sidebar {
+        width: 100%; /* Make sidebar take full width */
+        height: auto; /* Adjust height */
+        position: relative; /* Change positioning */
+        box-shadow: none;
+        border-right: none;
+        border-bottom: 2px solid var(--accent-color);
+    }
+    .sidebar .logo {
+        text-align: left;
+        padding: 15px 20px;
+        border-bottom: none; /* Remove border */
+    }
+    .sidebar .menu {
+        flex-direction: row; /* Horizontal menu */
+        overflow-x: auto; /* Scrollable menu */
+        padding: 0 10px;
+        flex-grow: 0; /* Don't let menu grow */
+    }
+    .menu-item {
+        padding: 10px 15px;
+        margin-bottom: 0;
+        flex-shrink: 0; /* Prevent items from shrinking */
+    }
+    .menu-item i {
+        margin-right: 8px; /* Add back margin for icons */
+    }
+    .menu-item:hover, .menu-item.active {
+        transform: none; /* Remove transform */
+    }
+    .sidebar .logout-btn {
+        display: none; /* Hide logout button (consider adding to a profile dropdown?) */
+    }
+
+    .main-content {
+        margin-left: 0; /* Remove margin */
+        width: 100%;
+        padding: 10px;
+    }
+
+    .page-header {
+        padding: 15px;
+        border-radius: 12px;
+    }
+    .page-title {
+        font-size: 20px;
+    }
+    .header-actions {
+        width: 100%;
+    }
+    .welcome-text {
+        font-size: 13px;
+    }
+
+    .dashboard-cards {
+        grid-template-columns: 1fr; /* Single column */
+        gap: 10px;
+    }
+    .card-value {
+        font-size: 22px;
+    }
+
+    .payroll-grid {
+        grid-template-columns: 1fr; /* Single column */
+        gap: 10px;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 10px auto;
+        padding: 15px;
+    }
+    .modal-header h2 {
+        font-size: 18px;
+    }
+
+    th, td {
+        padding: 12px 10px; /* Reduce table padding */
+        font-size: 13px;
+    }
+}
+
+/* Add Employee Modal Specific Styles */
+#addEmployeeModal .modal-content {
+    max-width: 600px; /* Adjust width as needed */
+}
+
+/* Add display:block to the HR modal base style */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    /* Removed backdrop-filter for broader compatibility if needed */
+    /* backdrop-filter: blur(5px); */
+     /* Ensure modal shows up */
+     /* display: flex; /* Can cause issues, use block instead */
+     /* justify-content: center; */
+     /* align-items: center; */
+}
+
+/* Style for the close button */
+.close-modal {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: var(--primary-color); /* HR theme color */
+    background: none;
+    border: none;
+    transition: all 0.2s;
+}
+
+.close-modal:hover {
+    color: var(--secondary-color); /* HR theme hover color */
+    transform: scale(1.1);
+}
+
+
+#addEmployeeModal .form-actions {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--accent-color); /* Use HR theme color */
+}
+
+/* Make labels bold */
+.modal .form-group label {
+    font-weight: 600;
+}
+
+/* Ensure consistent button styles */
+.modal .btn {
+    padding: 10px 20px;
+}
+
+/* No need to override button colors if they inherit correctly */
+
+/* --- Profile Dropdown Styles --- */
+.profile-dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: 10px; /* Add some space */
+}
+
+.profile-btn {
+    background-color: transparent;
+    color: var(--primary-color, #769FCD); /* HR text color */
+    padding: 5px 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.profile-btn:hover {
+    background-color: var(--accent-color, #D6E6F2);
+}
+
+.profile-img-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 8px;
+    object-fit: cover;
+    border: 1px solid var(--border-color, #DBE2EF);
+}
+
+.profile-btn span {
+    margin-right: 5px;
+    font-weight: 500;
+    display: inline-block;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.profile-btn .fa-caret-down {
+    margin-left: 5px;
+    font-size: 12px;
+    transition: transform 0.2s ease;
+}
+
+/* Rotate caret when active */
+.profile-dropdown.active .profile-btn .fa-caret-down {
+    transform: rotate(180deg);
+}
+
+.dropdown-content {
+    visibility: hidden; /* Use visibility/opacity for transitions */
+    opacity: 0;
+    position: absolute;
+    background-color: white;
+    min-width: 220px;
+    box-shadow: 0px 5px 15px var(--shadow-color, rgba(0,0,0,0.1));
+    z-index: 1100; /* Ensure it's above other content */
+    border-radius: 8px;
+    right: 0;
+    top: calc(100% + 5px);
+    margin-top: 0;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+    transform: translateY(-5px);
+}
+
+/* Show dropdown when parent has .active class */
+.profile-dropdown.active > .dropdown-content {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown-content a {
+    color: var(--text-color, #333);
+    padding: 10px 15px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+}
+
+.dropdown-content a i {
+    margin-right: 10px;
+    width: 18px;
+    text-align: center;
+    color: var(--secondary-color, #B9D7EA);
+    font-size: 15px;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--accent-color, #D6E6F2);
+    color: var(--primary-color, #769FCD);
+}
+
+.dropdown-content a:hover i {
+    color: var(--primary-color, #769FCD);
+}
+
+.dropdown-content a:last-child {
+    border-top: 1px solid #eee;
+    color: #d9534f;
+}
+
+.dropdown-content a:last-child:hover {
+    background-color: #d9534f;
+    color: white;
+}
+
+.dropdown-content a:last-child:hover i {
+    color: white;
+}
+
+/* Ensure header actions container alignment */
+.page-header .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Notifications Button Badge --- */
+.header-actions .btn .badge {
+    background-color: #ff4757; /* Or use a theme variable for danger/alert */
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 10px;
+    position: relative; /* Adjust as needed */
+    top: -8px;
+    right: -5px;
+    display: none; /* Hidden by default, shown by JS if count > 0 */
+}
+
+/* --- Notifications Container --- */
+.notifications-container {
+    position: absolute;
+    top: 65px; /* Adjust based on header height */
+    right: 20px; /* Align near the profile dropdown */
+    width: 350px;
+    max-height: 450px;
+    background-color: #fff;
+    border: 1px solid var(--border-color, #DBE2EF);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    z-index: 1200; /* Above other elements */
+    overflow: hidden;
+    display: none; /* Hidden by default */
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.2s ease, transform 0.2s ease, display 0s linear 0.2s;
+}
+
+.notifications-container.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.2s ease, transform 0.2s ease, display 0s linear 0s;
+}
+
+.notifications-header {
+    padding: 12px 15px;
+    font-weight: 600;
+    color: var(--primary-color, #769FCD);
+    border-bottom: 1px solid var(--border-color, #DBE2EF);
+    background-color: var(--accent-color, #D6E6F2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-notifications {
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--primary-color, #769FCD);
+    line-height: 1;
+}
+
+.close-notifications:hover {
+    color: var(--secondary-color, #B9D7EA);
+}
+
+.notifications-list {
+    max-height: 380px; /* Adjust based on container height and header */
+    overflow-y: auto;
+}
+
+.notification-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--border-color, #DBE2EF);
+    transition: background-color 0.2s ease;
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-item:hover {
+    background-color: var(--accent-color, #D6E6F2);
+}
+
+.notification-item.empty {
+    text-align: center;
+    color: #888;
+    padding: 20px;
+    font-style: italic;
+}
+
+.notification-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: var(--secondary-color, #B9D7EA);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.notification-icon i {
+    font-size: 16px;
+}
+
+.notification-content {
+    flex-grow: 1;
+    font-size: 14px;
+    color: var(--text-color, #333);
+    line-height: 1.4;
+}
+
+.notification-content .employee-name {
+    font-weight: 600;
+    color: var(--primary-color, #769FCD);
+    margin-right: 5px;
+}
+
+.notification-time {
+    display: block;
+    font-size: 11px;
+    color: #777;
+    margin-top: 3px;
+}
+
+
+
+.date-filter-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.date-filter-tab {
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+}
+
+.date-filter-tab.active {
+    background-color: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+}
+
+.date-filter-tab:hover:not(.active) {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.date-filter-content {
+    display: none;
+    padding: 15px 0;
+}
+
+.date-filter-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.filter-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+
+
+.filter-option label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.filter-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* End Filter Styles */
+
+/* --- START HR Attendance Filter Styles --- */
+.filter-container.card {
+    padding: 20px 25px; 
+}
+
+.filter-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.filter-mode-buttons {
+    display: inline-flex; 
+    border: 1px solid var(--border-color, #ccc);
+    border-radius: 12px; 
+    overflow: hidden; 
+    padding: 0; 
+    width: fit-content; 
+}
+
+.date-filter-btn {
+    background-color: white; 
+    color: var(--text-color, #333);
+    border: none; 
+    padding: 10px 20px; 
+    font-size: 14px;
+    cursor: pointer; 
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border-right: 1px solid var(--border-color, #ccc); 
+}
+
+.filter-mode-buttons .date-filter-btn:last-child {
+     border-right: none; 
+}
+
+.date-filter-btn.active {
+    background-color: var(--secondary-color, #3F72AF); 
+    color: white;
+    border-color: var(--secondary-color, #3F72AF);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); 
+}
+
+.date-filter-btn:not(.active):hover {
+    background-color: var(--accent-color, #f0f4f8); 
+}
+
+.filter-input-area {
+    padding: 10px 0; 
+    border-top: 1px solid var(--border-color, #eee); 
+    margin-top: -1px; 
+}
+
+.filter-input-area > div { 
+     padding-top: 15px;
+}
+
+.date-input-container-hr label, /* Use HR specific class/ID if needed */
+.month-input-container-hr label {
+    display: block;
+    margin-bottom: 8px; 
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--primary-color, #112D4E);
+}
+
+.filter-options {
+    display: grid;
+    /* Only one column needed for HR department filter */
+    grid-template-columns: minmax(220px, 1fr); 
+    gap: 20px;
+    border-top: 1px solid var(--border-color, #eee);
+    padding-top: 25px;
+}
+
+.filter-option label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--primary-color, #112D4E);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.filter-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px; 
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color, #eee);
+}
+/* --- END HR Attendance Filter Styles --- */
+
+/* Alert styles */
+.alert {
+    padding: 16px;
+}
+/* Payslip Modal Styles */
+.payslip-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(17, 45, 78, 0.8);
+    z-index: 2000;
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.payslip-content {
+    position: relative;
+    background: white;
+    margin: 40px auto;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: #3F72AF;
+    cursor: pointer;
+    z-index: 10;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(219, 226, 239, 0.5);
+    transition: all 0.3s;
+}
+
+.modal-close:hover {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    transform: rotate(90deg);
+}
+
+.payslip-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+}
+
+.payslip-header::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: white;
+    border-radius: 50% 50% 0 0;
+}
+
+.payslip-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+}
+
+.company-info {
+    margin-bottom: 15px;
+}
+
+.company-info h3 {
+    font-size: 20px;
+    margin: 0 0 5px;
+    font-weight: 600;
+}
+
+.company-info p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 14px;
+}
+
+.pay-period {
+    background: rgba(255, 255, 255, 0.15);
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.payslip-body {
+    padding: 40px 30px 30px;
+}
+
+.employee-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: var(--background-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.info-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-group label {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+    font-weight: 600;
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+}
+
+.info-group span {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.salary-section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.section-title i {
+    margin-right: 10px;
+    background: var(--accent-color);
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-color);
+}
+
+.breakdown-container {
+    background: var(--background-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.breakdown-row:last-child {
+    border-bottom: none;
+}
+
+.breakdown-row.sub-item {
+    padding-left: 40px;
+    font-size: 14px;
+    color: #666;
+}
+
+.total-row {
+    background: var(--accent-color);
+    font-weight: 600;
+    color: var(--primary-color);
+    border: 1px solid var(--border-color);
+    border-left: none;
+    border-right: none;
+}
+
+.grand-total {
+    background: var(--primary-color);
+    color: white;
+    font-size: 18px;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(17, 45, 78, 0.2);
+}
+
+.payslip-footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    color: #777;
+    font-size: 12px;
+    background: var(--background-color);
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    padding: 0 30px 30px;
+}
+
+.action-btn {
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.print-btn {
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+}
+
+.print-btn:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.download-btn {
+    background: white;
+    color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+}
+
+.download-btn:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .payslip-content {
+        margin: 20px auto;
+        width: 95%;
+    }
+    
+    .payslip-header {
+        padding: 20px;
+    }
+    
+    .payslip-body {
+        padding: 30px 20px 20px;
+    }
+    
+    .employee-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+}
+
+/* CSS Variables */
+:root {
+    --primary-color: #112D4E;
+    --secondary-color: #3F72AF;
+    --accent-color: #DBE2EF;
+    --background-color: #F9F7F7;
+    --border-color: #DBE2EF;
+}

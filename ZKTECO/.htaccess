@@ -1,0 +1,26 @@
+#### Protect C# service files from web access
+#### Allow PHP test files, block everything else
+
+<Files "*.php">
+    Require all granted
+</Files>
+
+<Files "*.md">
+    Require all granted
+</Files>
+
+<Files "*.txt">
+    Require all granted
+</Files>
+
+# Block C# executables and DLLs
+<FilesMatch "\.(exe|dll|pdb|config)$">
+    Require all denied
+</FilesMatch>
+
+# Block sensitive files
+<FilesMatch "\.(cs|csproj|sln|bat|ps1)$">
+    Require all denied
+</FilesMatch>
+
+

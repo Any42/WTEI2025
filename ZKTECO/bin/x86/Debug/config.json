@@ -1,0 +1,23 @@
+{
+  "device": {
+    "ip": "192.168.1.201",
+    "port": 4370,
+    "machineNumber": 1,
+    "commKey": 0
+  },
+  "database": {
+    "host": "localhost",
+    "port": 3306,
+    "name": "wteimain1",
+    "user": "root",
+    "password": ""
+  },
+  "webServer": {
+    "port": 8888,
+    "host": "localhost"
+  },
+  "sync": {
+    "fullSyncIntervalHours": 1,
+    "realTimeCheckIntervalSeconds": 2
+  }
+}

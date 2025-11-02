@@ -1,0 +1,137 @@
+/* Employee Details Modal Styles */
+.employee-details-modal .modal-content {
+    max-width: 700px;
+    width: 95%;
+}
+
+.employee-details-modal .modal-body {
+    padding: 25px;
+}
+
+.employee-info-section {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border-left: 4px solid #3F72AF;
+}
+
+.employee-info-section h3 {
+    color: #112D4E;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.employee-info-section h3 i {
+    color: #3F72AF;
+    font-size: 16px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #112D4E;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info-value {
+    color: #2D3748;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.attendance-summary {
+    background: linear-gradient(135deg, rgba(63, 114, 175, 0.05) 0%, rgba(17, 45, 78, 0.05) 100%);
+    border: 1px solid rgba(63, 114, 175, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.attendance-summary h4 {
+    color: #112D4E;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.attendance-summary h4 i {
+    color: #3F72AF;
+}
+
+.summary-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 12px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.stat-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #112D4E;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .summary-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .employee-info-section {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .summary-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-item {
+        padding: 10px;
+    }
+    
+    .stat-value {
+        font-size: 18px;
+    }
+}

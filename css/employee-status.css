@@ -1,0 +1,161 @@
+/* Employee Status Badge Styles */
+.status-badge {
+    padding: 10px 18px;
+    border-radius: 25px;
+    font-size: 11px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.status-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.status-badge:hover::before {
+    left: 100%;
+}
+
+.status-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Status Color Variants */
+.status-present {
+    background: linear-gradient(135deg, rgba(63, 114, 175, 0.2), rgba(63, 114, 175, 0.1));
+    color: #3F72AF;
+    border: 1px solid rgba(63, 114, 175, 0.3);
+}
+
+.status-absent {
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(255, 107, 107, 0.1));
+    color: #FF6B6B;
+    border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.status-late {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.2), rgba(255, 193, 7, 0.1));
+    color: #F57F17;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.status-early_in {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(76, 175, 80, 0.1));
+    color: #4CAF50;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.status-half-day {
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.2), rgba(33, 150, 243, 0.1));
+    color: #2196F3;
+    border: 1px solid rgba(33, 150, 243, 0.3);
+}
+
+.status-on_time {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.25), rgba(76, 175, 80, 0.15));
+    color: #4CAF50;
+    border: 1px solid rgba(76, 175, 80, 0.4);
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+}
+
+.status-success {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(76, 175, 80, 0.1));
+    color: #4CAF50;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.status-warning {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.2), rgba(255, 193, 7, 0.1));
+    color: #F57F17;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.status-danger {
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(255, 107, 107, 0.1));
+    color: #FF6B6B;
+    border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+/* Status Icons */
+.status-badge i {
+    font-size: 12px;
+    margin-right: 4px;
+}
+
+/* Animation for status badges */
+.status-badge {
+    animation: slideInFromLeft 0.3s ease;
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive Status Badges */
+@media (max-width: 768px) {
+    .status-badge {
+        padding: 8px 14px;
+        font-size: 10px;
+        letter-spacing: 0.5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .status-badge {
+        padding: 6px 12px;
+        font-size: 9px;
+        letter-spacing: 0.3px;
+    }
+}
+
+/* Status Badge with Icons */
+.status-badge.with-icon {
+    padding-left: 12px;
+}
+
+.status-badge.with-icon i {
+    margin-right: 6px;
+    font-size: 10px;
+}
+
+/* Pulsing animation for important statuses */
+.status-badge.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(63, 114, 175, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(63, 114, 175, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(63, 114, 175, 0);
+    }
+}
