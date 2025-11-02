@@ -1,0 +1,23 @@
+# Ignore build and dump files
+bin/
+obj/
+Dump/
+*.dmp
+*.exe
+*.dll
+*.pdb
+
+# Ignore Visual Studio and temporary files
+.vs/
+.vscode/
+*.user
+*.suo
+*.cache
+*.log
+*.tmp
+*.bak
+
+# Ignore PHP session files, uploads, and local configs
+uploads/
+.env
+*.sql
